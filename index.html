@@ -126,6 +126,22 @@ window.onload = () => {
 <footer>
   <p>© 2026 KPL – Kenya Football Portal</p>
 </footer>
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyB3aC5KIQsESG6TVA2xs5FIHFc1czTCM4I",
+  authDomain: "kenya-pl.firebaseapp.com",
+  projectId: "kenya-pl",
+  storageBucket: "kenya-pl.firebasestorage.app",
+  messagingSenderId: "186776531614",
+  appId: "1:186776531614:web:b3bf1250ab308798a8418f"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 </body>
 </html>
