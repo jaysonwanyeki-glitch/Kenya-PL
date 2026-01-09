@@ -3,3 +3,28 @@
 <input placeholder="Team"><br>
 <input placeholder="Position"><br>
 <button>Add Player</button>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "PASTE_FROM_FIREBASE",
+    authDomain: "PASTE_FROM_FIREBASE",
+    projectId: "PASTE_FROM_FIREBASE",
+    storageBucket: "PASTE_FROM_FIREBASE",
+    messagingSenderId: "PASTE_FROM_FIREBASE",
+    appId: "PASTE_FROM_FIREBASE"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  async function addPlayer() {
+    await addDoc(collection(db, "players"), {
+      name: document.getElementById("name").value,
+      team: document.getElementById("team").value,
+      position: document.getElementById("position").value
+    });
+    alert("Player added!");
+  }
+</script>
