@@ -1,33 +1,32 @@
-name: Update Player Data
+name: Football Data Bot
 
 on:
   schedule:
-    - cron: '0 0 * * 0' # Runs every Sunday at midnight
-  workflow_dispatch: # Allows you to click a button to run it manually
+    - cron: '0 0 * * *' # Wakes up every night at midnight
+  workflow_dispatch:   # Lets you wake it up manually with a button
 
 jobs:
-  scrape-and-update:
+  build:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
 
-      - name: Install Scraper Tools
+      - name: Install Tools
         run: pip install requests beautifulsoup4
 
-      - name: Run Scraper Script
+      - name: Run Scraper
         run: python scraper.py
 
-      - name: Commit and Push Changes
+      - name: Save Data
         run: |
-          git config --global user.name "GitHub Action Bot"
-          git config --global user.email "bot@noreply.github.com"
-          git add data/players.json
-          git commit -m "Updated player prices and stats" || echo "No changes to commit"
+          git config --global user.name "GitHub Robot"
+          git config --global user.email "bot@robot.com"
+          git add data/*.json
+          git commit -m "Robot updated the football data" || echo "No changes"
           git push
