@@ -1,204 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KPL – Kenya Football Portal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    :root {
-      --primary: #0a7d3b;
-      --secondary: #f4f6f8;
-      --text: #222;
-      --accent: #e7f5ea;
-      --price: #d32f2f;
-      --history: #555;
-    }
-
     body {
+      font-family: Arial, sans-serif;
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--secondary);
-      color: var(--text);
+      background: #f4f6f8;
     }
 
     header {
-      background: var(--primary);
-      color: white;
-      padding: 2rem 1rem;
+      background: #0a7d3b;
+      color: #fff;
+      padding: 1rem;
       text-align: center;
     }
 
-    header h1 { margin: 0; font-size: 2rem; }
-    header p { margin-top: 0.5rem; opacity: 0.9; }
-
     nav {
-      background: white;
+      background: #ffffff;
+      padding: 0.5rem;
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
-      padding: 1rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      gap: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     nav a {
       text-decoration: none;
-      color: var(--primary);
+      color: #0a7d3b;
       font-weight: bold;
-      text-transform: uppercase;
-      font-size: 0.9rem;
     }
-
-    nav a:hover { text-decoration: underline; }
 
     .container {
-      padding: 1.5rem;
-      max-width: 1000px;
-      margin: auto;
+      padding: 1rem 1.5rem;
     }
 
-    /* League Section Styling */
-    .league {
-      margin-bottom: 3rem;
+    h2 {
+      color: #0a7d3b;
+      margin-top: 2rem;
     }
 
-    .league-title {
-      background: var(--primary);
-      color: white;
-      padding: 0.8rem 1.2rem;
-      border-radius: 8px 8px 0 0;
-      margin-bottom: 0;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      margin-top: 1rem;
     }
 
-    .league-content {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 0 0 8px 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.6rem;
+      text-align: left;
     }
 
-    /* Team Styling */
-    .team {
-      margin-bottom: 2rem;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 1.5rem;
-    }
-
-    .team:last-child { border-bottom: none; margin-bottom: 0; }
-
-    .team h3 {
-      color: var(--primary);
-      margin-top: 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    /* Player Card Grid */
-    .player-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1rem;
-    }
-
-    .player-card {
-      background: white;
-      border: 1px solid #e0e0e0;
-      border-radius: 6px;
-      padding: 1rem;
-      transition: transform 0.2s;
-    }
-
-    .player-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      border-color: var(--primary);
-    }
-
-    .p-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 0.5rem;
-    }
-
-    .p-name {
-      font-weight: bold;
-      font-size: 1.05rem;
-      display: block;
-    }
-
-    .p-role {
-      font-size: 0.85rem;
-      color: #666;
-      background: #eee;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-
-    .p-market {
-      color: var(--price);
-      font-weight: bold;
-      font-size: 0.9rem;
-      display: block;
-      margin-top: 4px;
-    }
-
-    /* Transfer Journey Styling */
-    .p-journey {
-      margin-top: 0.8rem;
-      font-size: 0.8rem;
-      color: var(--history);
-      border-top: 1px dashed #ddd;
-      padding-top: 0.5rem;
-    }
-
-    .journey-label {
-      font-weight: bold;
-      display: block;
-      margin-bottom: 2px;
-      color: #888;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-    }
-
-    .journey-path {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .club {
-      color: #333;
-    }
-
-    .arrow {
-      color: #999;
-      font-size: 10px;
+    th {
+      background: #e8f5ee;
     }
 
     footer {
-      background: #222;
-      color: #aaa;
+      background: #0a7d3b;
+      color: #fff;
       text-align: center;
-      padding: 2rem;
-      margin-top: 3rem;
-      font-size: 0.9rem;
-    }
-    
-    .disclaimer {
-      background: #fff3cd;
-      color: #856404;
       padding: 1rem;
-      margin: 1rem auto;
-      max-width: 1000px;
-      border-radius: 6px;
-      text-align: center;
-      font-size: 0.9rem;
+      margin-top: 2rem;
     }
   </style>
 </head>
@@ -207,90 +74,117 @@
 
 <header>
   <h1>KPL – Kenya Football Portal</h1>
-  <p>Market Values • Transfers • Player Profiles</p>
+  <p>Leagues • Teams • Players (Auto-Updated)</p>
 </header>
 
 <nav>
-  <a href="#kpl">Premier League</a>
-  <a href="#nsl">Super League</a>
-  <a href="#div1">Division One</a>
-  <a href="#women">Women PL</a>
+  <a href="#standings">League Table</a>
+  <a href="#players">Players</a>
+  <a href="#about">About</a>
 </nav>
 
-<div class="disclaimer">
-  <strong>Note:</strong> Market values are estimates based on recent transfer activity. 
+<!-- 🧠 ROBOT BRAIN -->
+<script>
+async function loadFootballData() {
+  try {
+    /* ============================
+       1️⃣ LOAD LEAGUE STANDINGS
+    ============================ */
+    const tableResponse = await fetch('data/standings.json');
+    const tableData = await tableResponse.json();
+    const tableBody = document.getElementById('standings-data');
+
+    tableBody.innerHTML = '';
+    tableData.forEach(row => {
+      tableBody.innerHTML += `
+        <tr>
+          <td>${row.pos}</td>
+          <td><strong>${row.team}</strong></td>
+          <td>${row.played}</td>
+          <td>${row.gd}</td>
+          <td>${row.pts}</td>
+        </tr>
+      `;
+    });
+
+    /* ============================
+       2️⃣ LOAD PLAYERS
+    ============================ */
+    const playerResponse = await fetch('data/players.json');
+    const players = await playerResponse.json();
+    const playerContainer = document.getElementById('player-container');
+
+    playerContainer.innerHTML = '';
+    players.forEach(p => {
+      const journey = p.history.map(h => h.club).join(' ➜ ');
+
+      playerContainer.innerHTML += `
+        <div style="background:#fff; border:1px solid #ddd; padding:15px; margin-bottom:12px; border-radius:8px;">
+          <div style="display:flex; justify-content:space-between;">
+            <strong>${p.name}</strong>
+            <span style="color:#d32f2f; font-weight:bold;">${p.market_value}</span>
+          </div>
+
+          <div style="font-size:0.85rem; color:#555; margin-top:4px;">
+            Position: ${p.role} | Team: ${p.team}
+          </div>
+
+          <div style="font-size:0.75rem; color:#777; border-top:1px dashed #eee; margin-top:8px; padding-top:5px;">
+            History: ${journey}
+          </div>
+        </div>
+      `;
+    });
+
+  } catch (error) {
+    console.log("Waiting for GitHub robot data...");
+  }
+}
+
+window.onload = loadFootballData;
+</script>
+
+<!-- 📦 CONTENT -->
+<div class="container">
+
+  <section id="standings">
+    <h2>FKF Premier League Table – 2025/26</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>Team</th>
+          <th>P</th>
+          <th>GD</th>
+          <th>Pts</th>
+        </tr>
+      </thead>
+      <tbody id="standings-data">
+        <!-- Robot fills this -->
+      </tbody>
+    </table>
+  </section>
+
+  <section id="players">
+    <h2>Active Players & Market Values</h2>
+    <div id="player-container">
+      <p style="text-align:center;">🤖 Robot fetching player data...</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About KPL Website</h2>
+    <p>
+      KPL is a GitHub-powered football portal for Kenyan leagues.
+      Data updates automatically via JSON files.
+    </p>
+  </section>
+
 </div>
 
 <footer>
   <p>© 2026 KPL – Kenya Football Portal</p>
-  <p>Disclaimer: This is a demo project. Real-world player lists are maintained in databases.</p>
 </footer>
 
 </body>
 </html>
-<script>
-  async function loadPlayers() {
-    try {
-      // 1. Tell the robot to find the "notebook" file
-      const response = await fetch('data/players.json');
-      const players = await response.json();
-      
-      const container = document.getElementById('player-container');
-      container.innerHTML = ''; // Throw away the "Loading..." text
-
-      // 2. The robot groups players by their League
-      const leagues = {};
-      players.forEach(p => {
-        const leagueName = p.league || "FKF Premier League"; // Default if missing
-        if (!leagues[leagueName]) leagues[leagueName] = {};
-        if (!leagues[leagueName][p.team]) leagues[leagueName][p.team] = [];
-        leagues[leagueName][p.team].push(p);
-      });
-
-      // 3. The robot builds the League and Team sections
-      for (const [leagueName, teams] of Object.entries(leagues)) {
-        const leagueSection = document.createElement('section');
-        leagueSection.className = 'league';
-        
-        let teamsHtml = '';
-        for (const [teamName, teamPlayers] of Object.entries(teams)) {
-          let playersHtml = '';
-          teamPlayers.forEach(player => {
-            // This makes the "Transfer Journey" arrows
-            const historyStr = player.history ? player.history.map(h => `<span class="club">${h.club}</span>`).join(' <span class="arrow">➜</span> ') : 'New Player';
-
-            playersHtml += `
-              <div class="player-card">
-                <div class="p-header">
-                  <div>
-                    <span class="p-name">${player.name}</span>
-                    <span class="p-market">${player.market_value}</span>
-                  </div>
-                  <span class="p-role">${player.role}</span>
-                </div>
-                <div class="p-journey">
-                  <span class="journey-label">Transfer History</span>
-                  <div class="journey-path">${historyStr}</div>
-                </div>
-              </div>`;
-          });
-
-          teamsHtml += `
-            <div class="team">
-              <h3>${teamName}</h3>
-              <div class="player-list">${playersHtml}</div>
-            </div>`;
-        }
-
-        leagueSection.innerHTML = `
-          <h2 class="league-title">${leagueName}</h2>
-          <div class="league-content">${teamsHtml}</div>`;
-        
-        container.appendChild(leagueSection);
-      }
-    } catch (error) {
-      console.log("Waiting for robot to finish writing the notebook...");
-    }
-  }
-  loadPlayers();
-</script>
