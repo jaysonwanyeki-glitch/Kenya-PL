@@ -68,6 +68,26 @@
       margin-top: 2rem;
     }
   </style>
+  /* Loading Spinner */
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #0a7d3b;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.hidden {
+  display: none !important;
+}
+
 </head>
 
 <body>
@@ -88,13 +108,17 @@
 async function loadFootballData() {
   try {
     /* ============================
-       1️⃣ LOAD LEAGUE STANDINGS
+       LOAD LEAGUE STANDINGS
     ============================ */
     const tableResponse = await fetch('data/standings.json');
     const tableData = await tableResponse.json();
-    const tableBody = document.getElementById('standings-data');
 
+    // Hide standings spinner
+    document.getElementById('standings-loader').classList.add('hidden');
+
+    const tableBody = document.getElementById('standings-data');
     tableBody.innerHTML = '';
+
     tableData.forEach(row => {
       tableBody.innerHTML += `
         <tr>
@@ -108,28 +132,30 @@ async function loadFootballData() {
     });
 
     /* ============================
-       2️⃣ LOAD PLAYERS
+       LOAD PLAYERS
     ============================ */
     const playerResponse = await fetch('data/players.json');
     const players = await playerResponse.json();
-    const playerContainer = document.getElementById('player-container');
 
+    // Hide players spinner
+    document.getElementById('players-loader').classList.add('hidden');
+
+    const playerContainer = document.getElementById('player-container');
     playerContainer.innerHTML = '';
+
     players.forEach(p => {
       const journey = p.history.map(h => h.club).join(' ➜ ');
 
       playerContainer.innerHTML += `
-        <div style="background:#fff; border:1px solid #ddd; padding:15px; margin-bottom:12px; border-radius:8px;">
+        <div style="background:#fff; border:1px solid #ddd; padding:15px; margin-bottom:10px; border-radius:8px;">
           <div style="display:flex; justify-content:space-between;">
             <strong>${p.name}</strong>
             <span style="color:#d32f2f; font-weight:bold;">${p.market_value}</span>
           </div>
-
-          <div style="font-size:0.85rem; color:#555; margin-top:4px;">
+          <div style="font-size:0.85rem; color:#555;">
             Position: ${p.role} | Team: ${p.team}
           </div>
-
-          <div style="font-size:0.75rem; color:#777; border-top:1px dashed #eee; margin-top:8px; padding-top:5px;">
+          <div style="font-size:0.75rem; color:#777; margin-top:5px;">
             History: ${journey}
           </div>
         </div>
@@ -137,7 +163,8 @@ async function loadFootballData() {
     });
 
   } catch (error) {
-    console.log("Waiting for GitHub robot data...");
+    document.getElementById('player-container').innerHTML =
+      "⚠️ Check back soon for live updates!";
   }
 }
 
@@ -160,15 +187,22 @@ window.onload = loadFootballData;
         </tr>
       </thead>
       <tbody id="standings-data">
-        <!-- Robot fills this -->
+        <tr>
+    <td colspan="5" style="text-align:center;">
+      <div id="standings-loader" class="loader"></div>
+    </td>
+  </tr>
       </tbody>
     </table>
   </section>
 
   <section id="players">
     <h2>Active Players & Market Values</h2>
-    <div id="player-container">
-      <p style="text-align:center;">🤖 Robot fetching player data...</p>
+      <tr>
+    <td colspan="5" style="text-align:center;">
+      <div id="standings-loader" class="loader"></div>
+    </td>
+  </tr>
     </div>
   </section>
 
