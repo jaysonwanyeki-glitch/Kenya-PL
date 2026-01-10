@@ -1,1 +1,24 @@
-[]
+[
+  {
+    "name": "Benson Omala",
+    "team": "Gor Mahia",
+    "market_value": "\u20ac150k",
+    "role": "Striker",
+    "history": [
+      {
+        "club": "Gor Mahia"
+      }
+    ]
+  },
+  {
+    "name": "Austin Odhiambo",
+    "team": "Gor Mahia",
+    "market_value": "\u20ac125k",
+    "role": "Midfielder",
+    "history": [
+      {
+        "club": "Gor Mahia"
+      }
+    ]
+  }
+]

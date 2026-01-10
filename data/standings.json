@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "pos": "1",
+    "team": "Gor Mahia",
+    "played": "14",
+    "gd": "+10",
+    "pts": "27"
+  },
+  {
+    "pos": "2",
+    "team": "AFC Leopards",
+    "played": "15",
+    "gd": "+6",
+    "pts": "27"
+  },
+  {
+    "pos": "3",
+    "team": "Tusker FC",
+    "played": "15",
+    "gd": "+2",
+    "pts": "24"
+  },
+  {
+    "pos": "4",
+    "team": "Kenya Police",
+    "played": "14",
+    "gd": "+2",
+    "pts": "23"
+  }
+]
