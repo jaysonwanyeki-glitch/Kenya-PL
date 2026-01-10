@@ -1,7 +1,6 @@
-# This is YAML, not Python!
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Run data update script
-        run: python update_data.py  # This line tells the robot to run the python file
+        run: python update_data.py 
